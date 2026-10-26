@@ -1,0 +1,38 @@
+{
+  "raw": {
+    "fake": 23481,
+    "real": 21417,
+    "total": 44898
+  },
+  "publisher_tags_stripped": {
+    "fake": 7170,
+    "real": 21378,
+    "total": 28548
+  },
+  "after_audit_dedup": {
+    "fake": 17899,
+    "real": 20926,
+    "total": 38825
+  },
+  "splits": {
+    "train": {
+      "fake": 12529,
+      "real": 14648,
+      "total": 27177
+    },
+    "val": {
+      "fake": 2685,
+      "real": 3139,
+      "total": 5824
+    },
+    "test": {
+      "fake": 2685,
+      "real": 3139,
+      "total": 5824
+    }
+  },
+  "avg_word_count": {
+    "fake": 439.1,
+    "real": 402.0
+  }
+}
