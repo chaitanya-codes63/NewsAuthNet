@@ -1,9 +1,10 @@
-tensorflow>=2.15.0
-scikit-learn>=1.3.0
-pandas>=2.0.0
-numpy>=1.24.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
-fastapi>=0.104.0
-uvicorn>=0.24.0
-pydantic>=2.4.0
+{
+  "manifest_version": 3,
+  "name": "Fake News Sentinel",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["http://localhost:8000/*", "http://127.0.0.1:8000/*"]
+}

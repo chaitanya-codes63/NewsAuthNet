@@ -34,9 +34,8 @@ class EpochLogger(tf.keras.callbacks.Callback):
         )
 
 def train_baseline(train_df: pd.DataFrame, val_df: pd.DataFrame):
-    print("\n==========================================")
+    print("\n")
     print("Training Classical Baseline (TF-IDF + LR)")
-    print("==========================================")
     t0 = time.time()
     vec = TfidfVectorizer(max_features=50000, ngram_range=(1, 2))
     X_tr = vec.fit_transform(train_df["text"].fillna(""))
@@ -75,9 +74,8 @@ def train_neural(
     epochs: int = 6,
     batch_size: int = 64,
 ):
-    print(f"\n==========================================")
+    print("\n")
     print(f"Training TensorFlow Model: {model_name.upper()}")
-    print(f"==========================================")
     t0 = time.time()
     out_dir = MODELS_DIR / model_name
     out_dir.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 290px;
+      padding: 16px;
+      background-color: #0f172a;
+      color: #f8fafc;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    p {
+      font-size: 12px;
+      color: #94a3b8;
+      margin: 0 0 12px 0;
+      line-height: 1.4;
+    }
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    button {
+      width: 100%;
+      background-color: #2563eb;
+      color: white;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    button:hover { background-color: #3b82f6; }
+    button:disabled { background-color: #475569; cursor: not-allowed; }
+    
+    /* Loading Spinner */
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid #ffffff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Status & Result Box inside Popup */
+    #result-box {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: none;
+    }
+    .real { background: #064e3b; border: 1px solid #10b981; color: #ecfdf5; }
+    .fake { background: #881337; border: 1px solid #f43f5e; color: #fff1f2; }
+    .error { background: #7c2d12; border: 1px solid #f97316; color: #ffedd5; }
+  </style>
+</head>
+<body>
+  <h2>🛡️ News Sentinel</h2>
+  <p>Select a trained architecture and scan the active article.</p>
+  
+  <select id="model-select">
+    <option value="lstm">BiLSTM (Recurrent)</option>
+    <option value="cnn">TextCNN (Convolutional)</option>
+    <option value="gru">BiGRU (Recurrent)</option>
+    <option value="baseline">TF-IDF Baseline</option>
+  </select>
+
+  <button id="scan-btn">
+    <div class="spinner" id="spinner"></div>
+    <span id="btn-text">Analyze Current Page</span>
+  </button>
+
+  <div id="result-box"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

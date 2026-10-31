@@ -2,7 +2,7 @@
 import pickle
 from pathlib import Path
 import tensorflow as tf
-from tensorflow.keras import layers, models, optimizers
+from tensorflow.keras import layers, models, optimizers # type: ignore[reportMissingImports]
 
 def build_keras_model(
     name: str,

@@ -1,0 +1,49 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+
+# Model weights
+/models/**/*.joblib
+/models/**/*.pt
+/models/**/*.pth
+/models/**/*.h5
+/models/**/*.hdf5
+/models/**/*.keras
+/models/**/*.ckpt
+/models/**/*.onnx
+/models/**/*.safetensors
+/models/**/*.tflite
+/models/**/saved_model.pb
+/models/**/variables/
+
+
+# Dataset files
+
+# Ignore generated dataset splits
+/data/processed/*.csv
+/data/raw/*.csv
+
+
+# Frontend dependencies
+**/node_modules/
+**/dist/
+**/build/
+
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+
+# Logs and caches
+*.log
+.pytest_cache/
+.mypy_cache/
