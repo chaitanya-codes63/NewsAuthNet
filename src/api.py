@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from src.predict import Predictor, installed_models
+from src.explain import explain_json
 
 app = FastAPI(title="NewsAuthNet TensorFlow API")
 
@@ -65,9 +66,22 @@ def analyze(req: AnalyzeRequest):
     except Exception as e:
         return {"error": str(e)}
 
+
+@app.post("/api/explain")
+def explain_endpoint(req: AnalyzeRequest):
+    if req.model not in MODELS:
+        return {"error": f"Model '{req.model}' is not loaded. Available: {list(MODELS.keys())}"}
+    t0 = time.perf_counter()
+    try:
+        res = explain_json(req.text, model=req.model, top_k=50, predictor=MODELS[req.model])
+        res["latency_ms"] = round((time.perf_counter() - t0) * 1000, 1)
+        return res
+    except Exception as e:
+        return {"error": str(e)}
+
+
 @app.post("/api/analyze_all")
 def analyze_all(req: AnalyzeRequest):
-    """Runs article through ALL loaded models simultaneously for side-by-side comparison."""
     results = []
     for name, engine in MODELS.items():
         t0 = time.perf_counter()
